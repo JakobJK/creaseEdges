@@ -35,4 +35,3 @@ def clearCrease():
 
     for edge in edges:
         cmds.polyCrease(edge, ch=True, value=0, vertexValue=0)
-    cmds.select(sel)
