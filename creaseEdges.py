@@ -8,15 +8,15 @@ def selectCrease(creaseValue=0):
     edges = cmds.filterExpand(edgeCollection, sm=32, expand=True)
 
     creasedEdges = []
-
-    for edge in edges:
-        edgeValue = cmds.polyCrease(edge, query=True, value=True)
-        if creaseValue == 0:
-            if edgeValue[0] > 0:
-                creasedEdges.append(edge)
-        else:
-            if edgeValue[0] == creaseValue:
-                creasedEdges.append(edge)
+    if edges:
+        for edge in edges:
+            edgeValue = cmds.polyCrease(edge, query=True, value=True)
+            if creaseValue == 0:
+                if edgeValue[0] > 0:
+                    creasedEdges.append(edge)
+            else:
+                if edgeValue[0] == creaseValue:
+                    creasedEdges.append(edge)
     cmds.select(creasedEdges)
 
 
